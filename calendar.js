@@ -87,7 +87,6 @@ async function fetchCalendar(filterId) {
 }
 
 app.get('/', (req, res) => { 
-  res.redirect('https://github.com/brokenpylons/Calendar');
   res.send("To je stran, ki vrača urnike za storitev wise timetable. \n Storitev, ki to omogoča je razvil https://github.com/brokenpylons/Calendar")
 });
 
