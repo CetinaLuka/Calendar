@@ -112,5 +112,5 @@ app.get('/calendar', async (req, res) => {
   }
 });
 
-app.listen(port, host, function(){console.log(`${host}:${port}`);});
+app.listen(port);
 console.log(`${host}:${port}`);
