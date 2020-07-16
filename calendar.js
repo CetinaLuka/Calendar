@@ -5,6 +5,7 @@ const ical2json = require("ical2json");
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
+const { json } = require('express');
 const app = express();
 
 const port = process.env.PORT || 8080;
@@ -97,7 +98,7 @@ app.get('/up', (req, res) => {
 });
 
 app.get('/calendar', async (req, res) => {
-  res.set('content-type', 'text/plain');
+  res.set('content-type', 'application/json');
 
   if (!('filterId' in req.query)) {
     res.sendStatus(400);
@@ -107,7 +108,7 @@ app.get('/calendar', async (req, res) => {
   try {
     const data = await fetchCalendar(req.query.filterId);
     const jsonData = ical2json.convert(data);
-    res.send(data);
+    res.send(jsonData);
   } catch(e) {
     console.log(e);
     res.sendStatus(404);
