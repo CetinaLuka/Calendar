@@ -59,7 +59,7 @@ function setupDownloadHook(page, cookies) {
 }
 
 async function fetchCalendar(filterId) {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   try {
     const page = await browser.newPage();
     await page.goto(`http://www.wise-tt.com/wtt_um_feri/index.jsp?filterId=${filterId}`);
