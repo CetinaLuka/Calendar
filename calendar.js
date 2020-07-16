@@ -1,6 +1,7 @@
 const express = require('express');
 const fetch = require('node-fetch');
 const puppeteer = require('puppeteer');
+const ical2json = require("ical2json");
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
@@ -105,6 +106,7 @@ app.get('/calendar', async (req, res) => {
 
   try {
     const data = await fetchCalendar(req.query.filterId);
+    const jsonData = ical2json.convert(data);
     res.send(data);
   } catch(e) {
     console.log(e);
